@@ -1,5 +1,5 @@
 ready = function() {
-    var cmd = new CMD({
+    cmd = new CMD({
         respond: function() {
             var addClass = function(el, className) {
                 if (el.classList) {
