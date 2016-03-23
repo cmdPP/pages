@@ -10,15 +10,20 @@ ready = function() {
                 }
                 return el;
             };
+            var elResponses = document.getElementById('responses');
             for (var i = 0; i < arguments.length; i++) {
                 // document.querySelector('#responses').appendChild()
                 // var rowData = addClass(document.createElement('td'), 'response');
                 // var row = addClass(document.createElement('tr'), 'response');
                 // row = row.appendChild(rowData);
-                document.getElementById('responses').appendChild(
-                    addClass(document.createElement('tr'), 'response')
-                    .appendChild(addClass(document.createElement('td'), 'response'))
-                );
+                // document.getElementById('responses').appendChild(
+                //     addClass(document.createElement('tr'), 'response')
+                //     .appendChild(addClass(document.createElement('td'), 'response'))
+                // );
+
+                var row = addClass(document.createElement('tr'), 'response');
+                row.innerHTML = '<td class="response">'+arguments[i]+'</td>';
+                elResponses.appendChild(row);
 
                 // $('#responses').append('<tr class="response"><td class="response">'+arguments[i]+'</td></tr>');
             }
