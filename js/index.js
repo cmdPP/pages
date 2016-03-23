@@ -22,7 +22,9 @@ ready = function() {
                 // );
 
                 var row = addClass(document.createElement('tr'), 'response');
+                console.log('Row before data:', row);
                 row.innerHTML = '<td class="response">'+arguments[i]+'</td>';
+                console.log('With data:', row);
                 elResponses.appendChild(row);
 
                 // $('#responses').append('<tr class="response"><td class="response">'+arguments[i]+'</td></tr>');
