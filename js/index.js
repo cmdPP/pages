@@ -1,4 +1,5 @@
 ready = function() {
+    console.log('Ready called.');
     cmd = new CMD({
         respond: function() {
             var addClass = function(el, className) {
@@ -78,4 +79,5 @@ ready = function() {
     //         console.log("Arrow key functionality has not yet been implemented.");
     //     }
     // });
+    console.log('Ready finished.');
 };
