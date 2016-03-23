@@ -48,13 +48,17 @@ ready = function() {
     });
 
     document.addEventListener('keypress', function(e) {
+        console.log('Key pressed:', e);
         var key = e.keyCode || e.which;
         if (key === 13) {
-            cmd.command(document.getElementById('input').value);
+            console.log('Key was enter.');
+            var inputObj = document.getElementById('input');
+            console.log('Input val:', inputObj.value);
+            cmd.command(inputObj.value);
             cmd.historyBufferCurrentIdx = -1;
             var windowObj = document.getElementById('cmdWindow');
             windowObj.scrollTop = windowObj.scrollHeight;
-            document.getElementById('input').value = '';
+            inputObj.value = '';
         }
     });
     // $(document).keypress(function(e) {
