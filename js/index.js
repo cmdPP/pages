@@ -47,11 +47,12 @@ ready = function() {
         }
     });
 
-    document.addEventListener('keypress', function(e) {
-        console.log('Key pressed:', e);
+    document.body.addEventListener('keypress', function(e) {
+        // console.log('Key pressed:', e);
         var key = e.keyCode || e.which;
         if (key === 13) {
-            console.log('Key was enter.');
+            // console.log('Key was enter.');
+            console.log('Enter pressed.');
             var inputObj = document.getElementById('input');
             console.log('Input val:', inputObj.value);
             cmd.command(inputObj.value);
