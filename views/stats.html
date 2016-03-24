@@ -1,0 +1,9 @@
+<section id="stats">
+    <tr>
+        <td>
+            <pre>
+                  Data: {{ formattedBytes || "0 Bytes" }}      Money: {{ (money | currency : "$") || "$0.00" }}
+            </pre>
+        </td>
+    </tr>
+</section>

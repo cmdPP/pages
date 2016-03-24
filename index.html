@@ -6,29 +6,17 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body ng-controller="MainController">
-    <section id="stats">
+<body ng-controller="cmdppController">
+    <!-- <section id="stats">
         <tr>
-            <!-- <td>
-                &nbsp;&nbsp;Data:&nbsp;
-                <span id="dataCount">{{ formattedBytes || "0 Bytes" }}</span>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Money:&nbsp;
-                <span id="moneyCount">${{ money || "0" }}</span>
-            </td> -->
-
-            <!-- <td>
-                <pre>  Data: </pre>
-                <span id="dataCount">{{ (formattedBytes) || "0 Bytes" }}</span>
-                <pre>      Money: </pre>
-                <span id="moneyCount">${{ money || "0" }}</span>
-            </td> -->
             <td>
                 <pre>  Data: {{ formattedBytes || "0 Bytes" }}      Money: {{ (money | currency : "$") || "$0.00" }}</pre>
             </td>
         </tr>
-    </section>
+    </section> -->
+    <stats></stats>
     <section class="cmdWindow" id="console-section">
-        <terminal terminal-class="vintage-terminal"></terminal>
+        <terminal terminal-class="vintage-terminal" terminal-config="vintage"></terminal>
     </section>
 
     </terminal>

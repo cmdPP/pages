@@ -2,7 +2,8 @@ var app = angular.module('cmdpp', ['vtortola.ng-terminal']);
 
 // Controllers
 
-app.controller('MainController', ['$scope', '$rootScope', function($scope, $rootScope) {
+app.controller('cmdppController', ['$scope', '$rootScope', function($scope, $rootScope) {
+    $rootScope.theme = 'vintage';
     $scope.formattedBytes = '';
     $scope.money = '';
 
@@ -78,13 +79,28 @@ app.controller('MainController', ['$scope', '$rootScope', function($scope, $root
     console.log($rootScope);
 }]);
 
+// Directives
+
+app.directive('stats', function() {
+    return {
+        restrict: 'A',
+        replace: 'true',
+        templateUrl: 'views/stats.html'
+    };
+});
+
 // Providers
 
 // Config
 
 app.config(['terminalConfigurationProvider', function(terminalConfigurationProvider) {
+    console.log('In config!');
+    console.log(terminalConfigurationProvider);
+    console.log('vintage?');
+    console.log(terminalConfigurationProvider.config('vintage'));
     terminalConfigurationProvider.config('vintage').outputDelay = 10;
     terminalConfigurationProvider.config('vintage').allowTypeingWriteDisplaying = false;
     terminalConfigurationProvider.config('vintage').typeSoundUrl = 'wav/lib/type.wav';
     terminalConfigurationProvider.config('vintage').startSoundUrl = 'wav/lib/start.wav';
+    console.log(terminalConfigurationProvider);
 }]);
