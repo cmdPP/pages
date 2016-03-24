@@ -1,63 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="cmdpp">
 <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/lib/vtortola.ng-terminal.css" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<div id="stats">
-    <tr>
-        <td>
-            &nbsp;&nbsp;Data:&nbsp;
-            <span id="dataCount">0 bytes</span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Money:&nbsp;
-            <span id="moneyCount">$0</span>
-        </td>
-    </tr>
-</div>
-<div id="cmdWindow">
-    <table id="responses">
+<body ng-controller="MainController">
+    <section id="stats">
+        <tr>
+            <!-- <td>
+                &nbsp;&nbsp;Data:&nbsp;
+                <span id="dataCount">{{ formattedBytes || "0 Bytes" }}</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Money:&nbsp;
+                <span id="moneyCount">${{ money || "0" }}</span>
+            </td> -->
 
-    </table>
-</div>
-<form onsubmit="return false">
-    <input id="input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-</form>
-<footer id="version">
-    Demo V0.0.1. Created based on <a href="https://github.com/jettcrowson/jettcrowson.github.io">this project.</a>
-</footer>
-<script>
-    // var ready = function() {
-    //     console.error('Function has prematurely fired.');
-    // };
-    var ready = undefined;
-    var cmd = undefined;
-</script>
-<!-- Insert script tag pointing to github release -->
-<script src="https://github.com/cmdPP/core/releases/download/0.0.1/bundle-0.0.1.js"></script>
-<script src="js/index.js"></script>
+            <!-- <td>
+                <pre>  Data: </pre>
+                <span id="dataCount">{{ (formattedBytes) || "0 Bytes" }}</span>
+                <pre>      Money: </pre>
+                <span id="moneyCount">${{ money || "0" }}</span>
+            </td> -->
+            <td>
+                <pre>  Data: {{ formattedBytes || "0 Bytes" }}      Money: {{ (money | currency : "$") || "$0.00" }}</pre>
+            </td>
+        </tr>
+    </section>
+    <section class="cmdWindow" id="console-section">
+        <terminal terminal-class="vintage-terminal"></terminal>
+    </section>
 
-<script>
-    // if (document.readyState === 'complete') {
-    //     ready();
-    // } else {
-    //     document.addEventListener('complete', function() {
-    //         ready();
-    //     }, false);
-    // }
-    function whenAvailable(name, cb) {
-        var interval = 10;
-        window.setTimeout(function() {
-            if (window[name]) {
-                cb();
-            } else {
-                window.setTimeout(arguments.callee, interval);
-            }
-        }, interval);
-    }
-
-    whenAvailable('CMD', function() {
-        ready();
-    });
-</script>
+    </terminal>
+    <script src="js/lib/angular.js"></script>
+    <script src="js/lib/vtortola.ng-terminal.js"></script>
+    <script src="https://github.com/cmdPP/core/releases/download/v0.1.4/bundle.js"></script>
+    <script src="js/app.js"></script>
+    <!-- <script src="js/controllers/MainController.js"></script> -->
+</body>
 </html>
