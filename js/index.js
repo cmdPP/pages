@@ -59,9 +59,9 @@ ready = function() {
         var key = e.keyCode || e.which;
         if (key === 13) {
             // console.log('Key was enter.');
-            console.log('Enter pressed.');
+            // console.log('Enter pressed.');
             var inputObj = document.getElementById('input');
-            console.log('Input val:', inputObj.value);
+            // console.log('Input val:', inputObj.value);
             cmd.command(inputObj.value);
             cmd.historyBufferCurrentIdx = -1;
             var windowObj = document.getElementById('cmdWindow');
@@ -78,13 +78,22 @@ ready = function() {
     //     }
     // });
 
-    document.getElementById('input').addEventListener('keypress', function(e) {
+    // document.getElementById('input').addEventListener('keypress', function(e) {
+    //     var key = e.keyCode || e.which;
+    //     console.log('Input keypress:', e);
+    //     if (key === 38 || key === 40) {
+    //         cmd.respond("Arrow key functionality has not yet been implemented.");
+    //         console.log("Arrow key functionality has not yet been implemented.");
+    //     }
+    // });
+    document.getElementById('input').onkeydown = function(e) {
         var key = e.keyCode || e.which;
+        // console.log('Input keypress:', key);
         if (key === 38 || key === 40) {
             cmd.respond("Arrow key functionality has not yet been implemented.");
             console.log("Arrow key functionality has not yet been implemented.");
         }
-    });
+    };
     // $('#input').keyup(function(e) {
     //     if (e.which === 38 || e.which === 40) {
     //         cmd.respond("Arrow key functionality has not yet been implemented.");

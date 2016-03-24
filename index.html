@@ -27,22 +27,37 @@
     Demo V0.0.1. Created based on <a href="https://github.com/jettcrowson/jettcrowson.github.io">this project.</a>
 </footer>
 <script>
-    var ready = function() {
-        console.error('Function has prematurely fired.');
-    };
-    var cmd;
+    // var ready = function() {
+    //     console.error('Function has prematurely fired.');
+    // };
+    var ready = undefined;
+    var cmd = undefined;
 </script>
 <!-- Insert script tag pointing to github release -->
 <script src="https://github.com/cmdPP/core/releases/download/0.0.1/bundle-0.0.1.js"></script>
 <script src="js/index.js"></script>
 
 <script>
-    if (document.readyState === 'complete') {
-        ready();
-    } else {
-        document.addEventListener('complete', function() {
-            ready();
-        }, false);
+    // if (document.readyState === 'complete') {
+    //     ready();
+    // } else {
+    //     document.addEventListener('complete', function() {
+    //         ready();
+    //     }, false);
+    // }
+    function whenAvailable(name, cb) {
+        var interval = 10;
+        window.setTimeout(function() {
+            if (window[name]) {
+                cb();
+            } else {
+                window.setTimeout(arguments.callee, interval);
+            }
+        }, interval);
     }
+
+    whenAvailable('CMD', function() {
+        ready();
+    });
 </script>
 </html>
