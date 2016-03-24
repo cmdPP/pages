@@ -38,7 +38,8 @@ table {
 }
 .cmdWindow {
   width: 100%;
-  height: calc(100vh - 100px);
+  /*height: calc(100vh - 100px);*/
+  height: 100vh;
   background-color: black;
   color: white;
   font-family: "Courier New", "Courier", monospace;
@@ -131,3 +132,8 @@ button:focus {
   border-radius: 0;
   background: none;
 }*/
+
+.terminal {
+  height: 100%;
+  overflow-x: scroll;
+}
