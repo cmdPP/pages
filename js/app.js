@@ -55,6 +55,7 @@ app.controller('cmdppController', ['$scope', '$rootScope', function($scope, $roo
             $scope.formattedBytes = cmdObj.formatBytes();
             $scope.money = cmdObj.money;
             $scope.storage = cmdObj.formatter(cmdObj.storages[cmdObj.storage].capacity);
+            $scope.$apply();
             console.log('Data:', $scope.formattedBytes);
             console.log('Money:', $scope.money);
             console.log('Storage:',$scope.storage);
