@@ -45,7 +45,9 @@ app.controller('cmdppController', ['$scope', '$rootScope', function($scope, $roo
                 var dataName = storedDataNames[i];
                 loadObj[dataName] = JSON.parse(localStorage.getItem(dataName));
             }
-            cmd.update();
+
+            // TODO: Automatically update after loaded.
+
             return loadObj;
         },
         update: function(cmdObj) {
