@@ -85,6 +85,10 @@ app.directive('stats', function() {
     return {
         restrict: 'A',
         replace: 'true',
+        scope: {
+            data: '=',
+            money: '='
+        },
         templateUrl: 'views/stats.html'
     };
 });
