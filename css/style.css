@@ -51,7 +51,7 @@ body{
   height:100%;
 }
 stats {
-  display: none;
+  visibility: hidden;
 }
 #stats {
   width: 100%;
