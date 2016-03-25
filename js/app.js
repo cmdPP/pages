@@ -56,11 +56,11 @@ app.controller('cmdppController', ['$scope', '$rootScope', function($scope, $roo
             $scope.money = cmdObj.money;
             $scope.storage = cmdObj.formatter(cmdObj.storages[cmdObj.storage].capacity);
             $scope.$apply();
-            console.log('Data:', $scope.formattedBytes);
-            console.log('Money:', $scope.money);
-            console.log('Storage:',$scope.storage);
-
-            console.log('All storages:', cmdObj.storages);
+            // console.log('Data:', $scope.formattedBytes);
+            // console.log('Money:', $scope.money);
+            // console.log('Storage:',$scope.storage);
+            //
+            // console.log('All storages:', cmdObj.storages);
         },
         reset: function() {
             if (typeof Storage !== "undefined") {
