@@ -63,6 +63,11 @@ stats {
   margin-left: auto;
   margin-right: auto;
   padding-top:15px;
+  display: tabele;
+}
+#stats > p {
+  text-align: center;
+  display: table-cell;
 }
 #input {
   width: 100%;
