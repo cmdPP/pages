@@ -60,6 +60,12 @@ app.controller('cmdppController', ['$scope', '$rootScope', function($scope, $roo
             console.log('Storage:',$scope.storage);
 
             console.log('All storages:', cmdObj.storages);
+        },
+        reset: function() {
+            if (typeof Storage !== "undefined") {
+                localStorage.clear();
+                location.reload(true);
+            }
         }
     });
 
