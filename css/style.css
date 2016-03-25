@@ -63,11 +63,14 @@ stats {
   margin-left: auto;
   margin-right: auto;
   padding-top:15px;
-  display: tabele;
+  display: table;
 }
 #stats > p {
   text-align: center;
   display: table-cell;
+  font-family: monospace;
+  white-space: pre;
+  margin: 1em 0;
 }
 #input {
   width: 100%;
