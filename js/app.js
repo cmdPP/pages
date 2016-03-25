@@ -6,6 +6,7 @@ app.controller('cmdppController', ['$scope', '$rootScope', function($scope, $roo
     $rootScope.theme = 'vintage';
     $scope.formattedBytes = '0 B';
     $scope.money = '$0.00';
+    $scope.storage = '$0.00';
 
     var numDots = Math.floor(Math.random() * 10) + 1;
     var startText = ['Searching for save file'];
@@ -53,6 +54,7 @@ app.controller('cmdppController', ['$scope', '$rootScope', function($scope, $roo
         update: function(cmdObj) {
             $scope.formattedBytes = cmdObj.formatBytes();
             $scope.money = cmdObj.money;
+            $scope.storage = cmdObj.formatter(cmdObj.storages[cmdObj.storage].capacity);
         }
     });
 
@@ -91,7 +93,8 @@ app.directive('stats', function() {
         transclude: true,
         scope: {
             data: '=',
-            money: '='
+            money: '=',
+            storage: '='
         },
         templateUrl: 'views/stats.html'
     };
