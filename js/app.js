@@ -83,8 +83,9 @@ app.controller('cmdppController', ['$scope', '$rootScope', function($scope, $roo
 
 app.directive('stats', function() {
     return {
-        restrict: 'A',
+        restrict: 'E',
         replace: true,
+        transclude: true,
         scope: {
             data: '=',
             money: '='
