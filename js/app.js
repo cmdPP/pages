@@ -4,8 +4,8 @@ var app = angular.module('cmdpp', ['vtortola.ng-terminal']);
 
 app.controller('cmdppController', ['$scope', '$rootScope', function($scope, $rootScope) {
     $rootScope.theme = 'vintage';
-    $scope.formattedBytes = '';
-    $scope.money = '';
+    $scope.formattedBytes = '0 B';
+    $scope.money = '$0.00';
 
     var numDots = Math.floor(Math.random() * 10) + 1;
     var startText = ['Searching for save file'];
