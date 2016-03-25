@@ -1,7 +1,7 @@
 <section id="stats">
     <!-- <tr>
         <td> -->
-            <p>Data: {{ data }}</p>
+            <p>Data: {{ data || "0 B" }}</p>
             <p>Money: {{ (money | currency : "$") || "$0.00" }}</p>
         <!-- </td>
     </tr> -->
