@@ -59,15 +59,11 @@ stats {
   background-color: black;
   color: white;
   font-family: "Courier New", "Courier", monospace;
-  margin: auto;
-  padding-top:15px;
-}
-
-.stats-container {
+  /*margin: auto;*/
   margin-left: auto;
   margin-right: auto;
+  padding-top:15px;
 }
-
 #input {
   width: 100%;
   height: 50px;
