@@ -56,6 +56,8 @@ app.controller('cmdppController', ['$scope', '$rootScope', function($scope, $roo
         }
     });
 
+    $scope.version = 'v'+cmd.version;
+
     $scope.$on('terminal-input', function(e, consoleInput) {
         cmd.command(consoleInput[0].command);
     });
@@ -86,7 +88,8 @@ app.directive('stats', function() {
         scope: {
             data: '=',
             money: '=',
-            storage: '='
+            storage: '=',
+            version: '='
         },
         templateUrl: 'views/stats.html'
     };
