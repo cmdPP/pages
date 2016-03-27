@@ -1,12 +1,13 @@
-var app = angular.module('cmdpp', ['vtortola.ng-terminal']);
+var app = angular.module('cmdpp', ['vtortola.ng-terminal', 'angularLoad']);
 
 // Controllers
 
-app.controller('cmdppController', ['$scope', '$rootScope', function($scope, $rootScope) {
+app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad', function($scope, $http, $rootScope, angularLoad) {
     $rootScope.theme = 'vintage';
     $scope.formattedBytes = '0 B';
     $scope.money = '$0.00';
     $scope.storage = '$0.00';
+    console.log('Angular Load:', angularLoad);
 
     var numDots = Math.floor(Math.random() * 10) + 1;
     var startText = ['Searching for save file'];
@@ -18,6 +19,17 @@ app.controller('cmdppController', ['$scope', '$rootScope', function($scope, $roo
         output: true,
         text: startText,
         breakLine: false
+    });
+
+    $http.get('https://api.github.com/repos/cmdPP/core/releases').then(function(res) {
+        var assets = res.data[0].assets;
+        var bundleURL = "";
+        for (var asset of assets) {
+            if (asset.name === "bundle.js") {
+                bundleURL = asset.browser_download_url;
+            }
+        }
+
     });
 
     var cmd = new CMD({
