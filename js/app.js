@@ -21,51 +21,37 @@ app.controller('cmdppController', ['$scope', '$rootScope', function($scope, $roo
     });
 
     var cmd = new CMD({
-        respond: function() {
-            console.log(arguments);
-            $scope.$broadcast('terminal-output', {
-                output: true,
-                text: arguments,
-                breakLine: true
-            });
-            // for (var i = 0; i < arguments.length; i++) {
-            //     $scope.$broadcast
-            // }
-        },
-        save: function(cmdData) {
-            if (typeof Storage !== "undefined") {
-                for (var i in cmdData) {
-                    localStorage.setItem(i, JSON.stringify(cmdData[i]));
+        debug: true,
+        funcs: {
+            respond: function() {
+                console.log(arguments);
+                $scope.$broadcast('terminal-output', {
+                    output: true,
+                    text: arguments,
+                    breakLine: true
+                });
+            },
+            save: function(cmdData) {
+                if (typeof Storage !== "undefined") {
+                    for (var i in cmdData) {
+                        localStorage.setItem(i, JSON.stringify(cmdData[i]));
+                    }
                 }
-            }
-        },
-        load: function() {
-            var storedDataNames = ['data', 'money', 'increment', 'autoIncrement', 'unlocked'];
-            var loadObj = {};
-            for (var i = 0; i < storedDataNames.length; i++) {
-                var dataName = storedDataNames[i];
-                loadObj[dataName] = JSON.parse(localStorage.getItem(dataName));
-            }
-
-            // TODO: Automatically update after loaded.
-
-            return loadObj;
-        },
-        update: function(cmdObj) {
-            $scope.formattedBytes = cmdObj.formatBytes();
-            $scope.money = cmdObj.money;
-            $scope.storage = cmdObj.formatter(cmdObj.storages[cmdObj.storage].capacity);
-            $scope.$apply();
-            // console.log('Data:', $scope.formattedBytes);
-            // console.log('Money:', $scope.money);
-            // console.log('Storage:',$scope.storage);
-            //
-            // console.log('All storages:', cmdObj.storages);
-        },
-        reset: function() {
-            if (typeof Storage !== "undefined") {
-                localStorage.clear();
-                location.reload(true);
+            },
+            load: function() {
+                var storedDataNames = ['data', 'money', 'increment', 'autoIncrement', 'unlocked'];
+                var loadObj = {};
+                for (var i = 0; i < storedDataNames.length; i++) {
+                    var dataName = storedDataNames[i];
+                    loadObj[dataName] = JSON.parse(localStorage.getItem(dataName));
+                }
+                return loadObj;
+            },
+            update: function(cmdObj) {
+                $scope.formattedBytes = cmdObj.formatBytes();
+                $scope.money = cmdObj.money;
+                $scope.storage = cmdObj.formatter(cmdObj.storages[cmdObj.storage].capacity);
+                $scope.$apply();
             }
         }
     });
@@ -73,12 +59,6 @@ app.controller('cmdppController', ['$scope', '$rootScope', function($scope, $roo
     $scope.$on('terminal-input', function(e, consoleInput) {
         cmd.command(consoleInput[0].command);
     });
-
-    // $scope.$broadcast('terminal-output', {
-    //     output: true,
-    //     text: ['asdf', 'blah', 'sdofijosdijf'],
-    //     breakLine: true
-    // });
 
     setTimeout(function() {
         $scope.$broadcast('terminal-output', {
