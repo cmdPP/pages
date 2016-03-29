@@ -52,7 +52,7 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                     }
                 },
                 load: function() {
-                    var storedDataNames = ['data', 'money', 'increment', 'autoIncrement', 'unlocked'];
+                    var storedDataNames = ['data', 'money', 'increment', 'autoIncrement', 'storage', 'unlocked'];
                     var loadObj = {};
                     for (var i = 0; i < storedDataNames.length; i++) {
                         var dataName = storedDataNames[i];
