@@ -63,7 +63,8 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                 update: function(cmdObj) {
                     $scope.formattedBytes = cmdObj.formatBytes();
                     $scope.money = cmdObj.money;
-                    $scope.storage = cmdObj.formatter(cmdObj.storages[cmdObj.storage].capacity);
+                    // $scope.storage = cmdObj.formatter(cmdObj.storages[cmdObj.storage].capacity);
+                    $scope.storage = cmdObj.formatter(cmdObj.storage.capacity);
                     $scope.$apply();
                 }
             }
