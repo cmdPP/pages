@@ -33,42 +33,39 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
         }
         return angularLoad.loadScript(bundleURL);
     }).then(function() {
-        var cmd = new CMD({
-            debug: true,
-            funcs: {
-                respond: function() {
-                    console.log(arguments);
-                    $scope.$broadcast('terminal-output', {
-                        output: true,
-                        text: arguments,
-                        breakLine: true
-                    });
-                },
-                save: function(cmdData) {
-                    if (typeof Storage !== "undefined") {
-                        for (var i in cmdData) {
-                            localStorage.setItem(i, JSON.stringify(cmdData[i]));
-                        }
+        var cmd = new CMD(
+            function() {
+                console.log(arguments);
+                $scope.$broadcast('terminal-output', {
+                    output: true,
+                    text: arguments,
+                    breakLine: true
+                });
+            },
+            function(cmdData) {
+                if (typeof Storage !== "undefined") {
+                    for (var i in cmdData) {
+                        localStorage.setItem(i, JSON.stringify(cmdData[i]));
                     }
-                },
-                load: function() {
-                    var storedDataNames = ['data', 'money', 'increment', 'autoIncrement', 'storage', 'unlocked'];
-                    var loadObj = {};
-                    for (var i = 0; i < storedDataNames.length; i++) {
-                        var dataName = storedDataNames[i];
-                        loadObj[dataName] = JSON.parse(localStorage.getItem(dataName));
-                    }
-                    return loadObj;
-                },
-                update: function(cmdObj) {
-                    $scope.formattedBytes = cmdObj.formatBytes();
-                    $scope.money = cmdObj.money;
-                    // $scope.storage = cmdObj.formatter(cmdObj.storages[cmdObj.storage].capacity);
-                    $scope.storage = cmdObj.formatter(cmdObj.storage.capacity);
-                    $scope.$apply();
                 }
+            },
+            function() {
+                var storedDataNames = ['data', 'money', 'increment', 'autoIncrement', 'storage', 'unlocked'];
+                var loadObj = {};
+                for (var i = 0; i < storedDataNames.length; i++) {
+                    var dataName = storedDataNames[i];
+                    loadObj[dataName] = JSON.parse(localStorage.getItem(dataName));
+                }
+                return loadObj;
+            },
+            function(cmdObj) {
+                $scope.formattedBytes = cmdObj.formatBytes();
+                $scope.money = cmdObj.money;
+                // $scope.storage = cmdObj.formatter(cmdObj.storages[cmdObj.storage].capacity);
+                $scope.storage = cmdObj.formatter(cmdObj.storage.capacity);
+                $scope.$apply();
             }
-        });
+        );
 
         $scope.version = 'v'+cmd.version;
 
