@@ -1,3 +1,5 @@
+@import 'vtortola-terminal';
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, blockquote,a,
 abbr, acronym, address, big, cite, code,
@@ -18,25 +20,31 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav {
   display: block;
 }
-html{
-  overflow:hidden;
+
+html {
+  overflow: hidden;
 }
+
 body {
   line-height: 1;
   background-color: black;
+  height: 100%;
 }
+
 ol, ul {
   list-style: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 .cmdWindow {
   width: 100%;
   height: calc(100vh - 100px);
@@ -48,12 +56,11 @@ table {
   text-indent: 15px;
   overflow-y:auto;
 }
-body{
-  height:100%;
-}
+
 stats {
   visibility: hidden;
 }
+
 #stats {
   width: 100%;
   height: 50px;
@@ -65,86 +72,61 @@ stats {
   margin-right: auto;
   padding-top:15px;
   display: table;
-}
-#stats > p {
-  text-align: center;
-  display: table-cell;
-  font-family: monospace;
-  white-space: pre;
-  margin: 1em 0;
-}
-#input {
-  width: 100%;
-  height: 50px;
-  border: 0px;
-  border-top: 1px solid white;
-  background-color: black;
-  color: white;
-  font-family: "Courier New", "Courier", monospace;
-  text-indent: 15px;
-  display: block;
-  margin: auto;
-  font-size:20px;
+  
+  p {
+    text-align: center;
+    display: table-cell;
+    font-family: monospace;
+    white-space: pre;
+    margin: 1em 0;
+  }
 }
 
-input:focus,
-select:focus,
-textarea:focus,
-
-button:focus {
+input:focus, select:focus, textarea:focus, button:focus {
   outline: none;
-}
-#dataCount, #moneyCount, #capac{
-  display:inline;
-}
-#version {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  margin-right: 50px;
-  font-family: "Courier New", "Courier", monospace;
-  color: white;
 }
 
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
+  
+  &-button {
+    width: 0px;
+    height: 0px;
+  }
+  
+  &-thumb {
+    background: #4d4d4d;
+    border: 0px none #ffffff;
+    border-radius: 100px;
+    
+    &:hover {
+      background: #6e6e6e;
+    }
+    
+    &:active {
+      background: #000000;
+    }
+  }
+  
+  &-track {
+    background: #000000;
+    border: 0px none #ffffff;
+    border-radius: 100px;
+    
+    &:hover {
+      background: #313131;
+    }
+    
+    &:active {
+      background: #4a4a4a;
+    }
+  }
+  
+  &-corner {
+    background: transparent;
+  }
 }
-::-webkit-scrollbar-button {
-  width: 0px;
-  height: 0px;
-}
-::-webkit-scrollbar-thumb {
-  background: #4d4d4d;
-  border: 0px none #ffffff;
-  border-radius: 100px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #6e6e6e;
-}
-::-webkit-scrollbar-thumb:active {
-  background: #000000;
-}
-::-webkit-scrollbar-track {
-  background: #000000;
-  border: 0px none #ffffff;
-  border-radius: 100px;
-}
-::-webkit-scrollbar-track:hover {
-  background: #313131;
-}
-::-webkit-scrollbar-track:active {
-  background: #4a4a4a;
-}
-::-webkit-scrollbar-corner {
-  background: transparent;
-}
-/*
-.vintage-terminal {
-  border: none;
-  border-radius: 0;
-  background: none;
-}*/
 
 .terminal {
   height: 100%;
