@@ -8,6 +8,16 @@
 </head>
 
 <body ng-controller="cmdppController" data-scheme="{{ scheme || 'default' }}">
+    <div class="content" data-scheme="{{ scheme || 'default' }}">
+        <div class="links">
+            <a href="./core">Documentation</a>
+        </div>
+        <stats data="formattedBytes" money="money" storage="storage" version="version"></stats>
+        <section class="cmd-window" id="console-section">
+            <terminal terminal-class="vintage-terminal" terminal-config="vintage"></terminal>
+        </section>
+    </div>
+    
     <!-- <section id="stats">
         <tr>
             <td>
@@ -15,18 +25,18 @@
             </td>
         </tr>
     </section> -->
-    <div class="links">
+    <!-- <div class="links">
         <a href="./core">Documentation</a>
-    </div>
+    </div> -->
     <!-- <div class="stats-container">
         <stats data="formattedBytes" money="money" storage="storage" version="version" scheme="scheme"></stats>
     </div> -->
     <!-- <stats data="formattedBytes" money="money" storage="storage" version="version" scheme="scheme"></stats> -->
-    <stats data="formattedBytes" money="money" storage="storage" version="version"></stats>
+    <!-- <stats data="formattedBytes" money="money" storage="storage" version="version"></stats> -->
     <!-- <section class="cmd-window" id="console-section" data-scheme="{{ scheme || 'default' }}"> -->
-    <section class="cmd-window" id="console-section">
+    <!-- <section class="cmd-window" id="console-section">
         <terminal terminal-class="vintage-terminal" terminal-config="vintage"></terminal>
-    </section>
+    </section> -->
     <script src="js/lib/angular.js"></script>
     <script src="js/lib/vtortola.ng-terminal.js"></script>
     <script src="js/lib/angular-load.min.js"></script>
