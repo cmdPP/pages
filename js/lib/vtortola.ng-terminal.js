@@ -537,7 +537,8 @@
                                 console.log('poss:', poss);
                                 if (poss.length === 1) {
                                     target.val(poss[0]);
-                                    consoleInput.val(poss[0]);
+                                    // consoleInput.val(poss[0]);
+                                    angular.element(element[0].querySelector('.terminal-input')).textContent = poss[0];
                                 } else if (poss.length > 1) {
                                     var tabbedPos = [""];
                                     for (var possible of poss) {
