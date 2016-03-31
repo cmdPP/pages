@@ -100,7 +100,16 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                             // self.update();
                         },
                         desc: function() {
-                            var schemes = ['default', 'coral', 'fire', 'hacker', 'invert', 'mint', 'naked', 'ocean'];
+                            var schemes = [
+                                'default',
+                                'coral',
+                                'fire',
+                                'hax0r',
+                                'invert',
+                                'mint',
+                                'naked',
+                                // 'ocean'
+                            ];
                             var available = ["Sets the color scheme.", "Available color schemes:"];
                             for (var scheme of schemes) {
                                 if (scheme === self.scheme) {
