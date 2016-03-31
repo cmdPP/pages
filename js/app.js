@@ -7,6 +7,7 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
     $scope.formattedBytes = '0 B';
     $scope.money = '$0.00';
     $scope.storage = '$0.00';
+    $scope.scheme = 'default';
     console.log('Angular Load:', angularLoad);
 
     var numDots = Math.floor(Math.random() * 10) + 1;
@@ -63,9 +64,44 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                 $scope.money = cmdObj.money;
                 // $scope.storage = cmdObj.formatter(cmdObj.storages[cmdObj.storage].capacity);
                 $scope.storage = cmdObj.formatter(cmdObj.storage.capacity);
+                $scope.scheme = cmdObj.scheme;
                 $scope.$apply();
+            },
+            function() {
+                return {
+                    colorScheme: {
+                        func: function(scheme) {
+                            var schemes = ['default', 'coral', 'fire', 'hacker', 'invert', 'mint', 'naked', 'ocean'];
+                            if (scheme && scheme !== "") {
+                                if (scheme === this.scheme) {
+                                    this.respond("You've already selected this scheme.");
+                                } else if (schemes.indexOf(scheme) !== -1) {
+                                    this.scheme = scheme;
+                                    this.respond("You've changed your scheme to: "+scheme);
+                                } else {
+                                    this.respond("Scheme not found.");
+                                }
+                            } else {
+                                this.command("help colorScheme");
+                            }
+                            this.update();
+                        },
+                        desc: function() {
+                            var schemes = ['default', 'coral', 'fire', 'hacker', 'invert', 'mint', 'naked', 'ocean'];
+                            var available = ["Sets the color scheme.", "Available color schemes:"];
+                            for (var scheme of schemes) {
+                                if (scheme === this.scheme) {
+                                    scheme = "* "+scheme;
+                                }
+                                available.push("\t"+scheme);
+                            }
+                            return available;
+                        }
+                    }
+                };
             }
         );
+        cmd.scheme = "default";
 
         $scope.version = 'v'+cmd.version;
 
@@ -156,7 +192,8 @@ app.directive('stats', function() {
             data: '=',
             money: '=',
             storage: '=',
-            version: '='
+            version: '=',
+            scheme: '='
         },
         templateUrl: 'views/stats.html'
     };

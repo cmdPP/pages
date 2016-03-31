@@ -19,9 +19,9 @@
         <a href="./core">Documentation</a>
     </div>
     <div class="stats-container">
-        <stats data="formattedBytes" money="money" storage="storage" version="version"></stats>
+        <stats data="formattedBytes" money="money" storage="storage" version="version" scheme="colorScheme"></stats>
     </div>
-    <section class="cmdWindow" id="console-section">
+    <section class="cmdWindow" id="console-section" data-scheme="{{ colorScheme || 'default' }}">
         <terminal terminal-class="vintage-terminal" terminal-config="vintage"></terminal>
     </section>
     <script src="js/lib/angular.js"></script>

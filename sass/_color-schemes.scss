@@ -1,0 +1,17 @@
+$color_schemes: (
+  default: (back: black, color: white, input: whit),
+  coral: (back: #042029, color: #268BD2, input: #859900),
+  fire: (back: #E62739, color: white, input: yellow),
+  hacker: (back: black, color: #82B600, input: #887F32),
+  invert: (back: white, color: black, input: black),
+  mint: (back: #3F4531, color: #91F9E5, input: #7CFFA6),
+  naked: (back: #B3C2BF, color: #3B3A36, input: #27588F),
+  ocean: (back: #89BDD3, color: white, input: #105BAD)
+);
+
+@each $scheme, $colorMap in $color_schemes {
+  [data-scheme="#{$scheme}"] {
+    background-color: map-get($colorMap, back);
+    color: map-get($colorMap, color);
+  }
+}
