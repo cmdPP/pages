@@ -166,6 +166,7 @@
     };
 
     $scope.$on('terminal-output', function (e, output) {
+        console.log('Terminal Output:', output);
         if (!output.added) {
             output.added = true;
             $scope.results.push(output);
