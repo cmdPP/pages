@@ -530,8 +530,11 @@
                         target.on("keydown", function (e) {
 
                             if (e.keyCode == 9) {
+                                console.log('hit tab');
                                 var val = target.val();
+                                console.log('val:', val);
                                 var poss = scope.getComplete(val);
+                                console.log('poss:', poss);
                                 if (poss.length === 1) {
                                     target.val(poss[0]);
                                 } else if (poss.length > 1) {
