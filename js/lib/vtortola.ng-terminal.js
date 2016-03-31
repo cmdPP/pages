@@ -458,6 +458,8 @@
                             }
                             f[f.length - 1]();
                         });
+                        
+                        scope.$apply();
 
                 }
             }
