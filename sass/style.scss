@@ -45,7 +45,7 @@ table {
   border-spacing: 0;
 }
 
-.cmdWindow {
+.cmd-window {
   width: 100%;
   height: calc(100vh - 100px);
   /*height: 100vh;*/
@@ -61,7 +61,7 @@ stats {
   visibility: hidden;
 }
 
-#stats {
+.stats-window {
   width: 100%;
   height: 50px;
   background-color: black;
