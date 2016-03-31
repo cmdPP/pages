@@ -552,6 +552,7 @@
                                     for (var possible of poss) {
                                         tabbedPos.push("\t"+possible);
                                     }
+                                    console.log('tabbed:', tabbedPos);
                                     scope.$broadcast('terminal-output', {
                                         output: true,
                                         text: tabbedPos
