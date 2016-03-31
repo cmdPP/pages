@@ -286,7 +286,7 @@
                 post: function postLink(scope, element, attrs, controller) { 
                         console.log('VTortola autocomplete function: ', ('autocomplete' in attrs ? attrs['autocomplete'] : undefined));
                         scope.$watch('autocompleteValues', function(newVal, oldVal) {
-                            if (newValue) {
+                            if (newVal) {
                                 console.log('Autocomplete Values have been set:', newVal);
                                 console.log('Old val:', oldVal);
                             }
