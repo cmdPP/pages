@@ -9,9 +9,18 @@ $color_schemes: (
   ocean: (back: #89BDD3, color: white, input: #105BAD)
 );
 
+// @each $scheme, $colorMap in $color_schemes {
+//   [data-scheme="#{$scheme}"] {
+//     background-color: map-get($colorMap, back);
+//     color: map-get($colorMap, color);
+//   }
+// }
+
 @each $scheme, $colorMap in $color_schemes {
   [data-scheme="#{$scheme}"] {
-    background-color: map-get($colorMap, back);
-    color: map-get($colorMap, color);
+    &.cmdWindow, &#stats {
+      background-color: map-get($colorMap, back);
+      color: map-get($colorMap, color);
+    }
   }
 }
