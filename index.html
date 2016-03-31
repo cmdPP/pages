@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.min.css" />
 </head>
 
-<body ng-controller="cmdppController">
+<body ng-controller="cmdppController" data-scheme="{{ scheme || 'default' }}">
     <!-- <section id="stats">
         <tr>
             <td>
@@ -22,7 +22,8 @@
         <stats data="formattedBytes" money="money" storage="storage" version="version" scheme="scheme"></stats>
     </div> -->
     <stats data="formattedBytes" money="money" storage="storage" version="version" scheme="scheme"></stats>
-    <section class="cmd-window" id="console-section" data-scheme="{{ scheme || 'default' }}">
+    <!-- <section class="cmd-window" id="console-section" data-scheme="{{ scheme || 'default' }}"> -->
+    <section class="cmd-window" id="console-section">
         <terminal terminal-class="vintage-terminal" terminal-config="vintage"></terminal>
     </section>
     <script src="js/lib/angular.js"></script>

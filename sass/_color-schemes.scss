@@ -10,7 +10,7 @@ $color_schemes: (
 );
 
 @each $scheme, $colorMap in $color_schemes {
-  .cmd-window[data-scheme="#{$scheme}"] {
+  body[data-scheme="#{$scheme}"] {
     background-color: map-get($colorMap, back);
     color: map-get($colorMap, color);
   }
