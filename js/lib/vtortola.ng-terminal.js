@@ -132,7 +132,7 @@
     $scope.commandLine = '';
     
     // $scope.autocomplete = [];
-    
+    console.log('Initial autocomplete:', $scope.autocomplete);
     $scope.results = [];
     $scope.showPrompt = true;
     $scope.typeSound = function () { };
