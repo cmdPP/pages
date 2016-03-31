@@ -271,7 +271,7 @@
         }
     }
     
-    $scope.$watch('autocomplete', function(newVal, oldVal) {
+    $scope.$watchCollection('autocomplete', function(newVal, oldVal) {
         if (newVal) {
             console.log('New autocomplete:', newVal);
             console.log('Old val:', oldVal);
