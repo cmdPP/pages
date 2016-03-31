@@ -7,6 +7,7 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
     $scope.formattedBytes = '0 B';
     $scope.money = '$0.00';
     $scope.storage = '$0.00';
+    $scope.scheme = 'default';
     console.log('Angular Load:', angularLoad);
 
     var numDots = Math.floor(Math.random() * 10) + 1;
@@ -33,7 +34,7 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
         }
         return angularLoad.loadScript(bundleURL);
     }).then(function() {
-        cmd = new CMD(
+        var cmd = new CMD(
             function() {
                 console.log(arguments);
                 $scope.$broadcast('terminal-output', {
@@ -67,7 +68,38 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                 $scope.$apply();
             },
             function() {
-                return {};
+                var self = this;
+                return {
+                    colorScheme: {
+                        func: function(scheme) {
+                            var schemes = ['default', 'coral', 'fire', 'hacker', 'invert', 'mint', 'naked', 'ocean'];
+                            if (scheme && scheme !== "") {
+                                if (scheme === $scope.scheme) {
+                                    self.respond("You've already selected this scheme.");
+                                } else if (schemes.indexOf(scheme) !== -1) {
+                                    $scope.scheme = scheme;
+                                    self.respond("You've changed your scheme to: "+scheme);
+                                } else {
+                                    self.respond("Scheme not found.");
+                                }
+                            } else {
+                                self.command("help colorScheme");
+                            }
+                            // self.update();
+                        },
+                        desc: function() {
+                            var schemes = ['default', 'coral', 'fire', 'hacker', 'invert', 'mint', 'naked', 'ocean'];
+                            var available = ["Sets the color scheme.", "Available color schemes:"];
+                            for (var scheme of schemes) {
+                                if (scheme === self.scheme) {
+                                    scheme = "* "+scheme;
+                                }
+                                available.push("\t"+scheme);
+                            }
+                            return available;
+                        }
+                    }
+                };
             }
         );
         // cmd.scheme = "default";
