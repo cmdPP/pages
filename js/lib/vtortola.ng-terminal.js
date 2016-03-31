@@ -131,6 +131,8 @@
     
     $scope.commandLine = '';
     
+    $scope.autocomplete = [];
+    
     $scope.results = [];
     $scope.showPrompt = true;
     $scope.typeSound = function () { };
@@ -268,12 +270,22 @@
             $scope.$apply();
         }
     }
+    
+    $scope.$watch('autocomplete', function(newVal, oldVal) {
+        if (newVal) {
+            console.log('New autocomplete:', newVal);
+            console.log('Old val:', oldVal);
+        }
+    })
 }])
 
 .directive('terminal', function ($document) {
     return {
         restrict: 'E',
         controller: 'terminalController',
+        scope: {
+            autocomplete: '='
+        },
         transclude: true,
         replace:true,
         // template: "<section class='terminal' ng-paste='handlePaste($event)'><div class='terminal-viewport'><div class='terminal-results'></div><span class='terminal-prompt' ng-show='showPrompt'>{{prompt.text}}</span><span class='terminal-input'>{{commandLine}}</span><span class='terminal-cursor'>_</span><input type='text' ng-model='commandLine' class='terminal-target'/></div><div ng-transclude></div></section>",
@@ -284,14 +296,14 @@
                    
                 },
                 post: function postLink(scope, element, attrs, controller) { 
-                        console.log('VTortola autocomplete function: ', ('autocomplete' in attrs ? attrs['autocomplete'] : undefined));
-                        scope.$watch('autocompleteValues', function(newVal, oldVal) {
-                            if (newVal) {
-                                console.log('Autocomplete Values have been set:', newVal);
-                                console.log('Old val:', oldVal);
-                            }
-                        }, true);
-                        scope.autocompleteValues = ('autocomplete' in attrs ? attrs['autocomplete'] : []);
+                        // console.log('VTortola autocomplete function: ', ('autocomplete' in attrs ? attrs['autocomplete'] : undefined));
+                        // scope.$watch('autocompleteValues', function(newVal, oldVal) {
+                        //     if (newVal) {
+                        //         console.log('Autocomplete Values have been set:', newVal);
+                        //         console.log('Old val:', oldVal);
+                        //     }
+                        // }, true);
+                        // scope.autocompleteValues = ('autocomplete' in attrs ? attrs['autocomplete'] : []);
                         var terminal = element;
                         var target = angular.element(element[0].querySelector('.terminal-target'));
                         var consoleView = angular.element(element[0].querySelector('.terminal-viewport'));
@@ -459,7 +471,7 @@
                             f[f.length - 1]();
                         });
                         
-                        scope.$apply();
+                        // scope.$apply();
 
                 }
             }
