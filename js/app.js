@@ -64,33 +64,34 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                 $scope.money = cmdObj.money;
                 // $scope.storage = cmdObj.formatter(cmdObj.storages[cmdObj.storage].capacity);
                 $scope.storage = cmdObj.formatter(cmdObj.storage.capacity);
-                $scope.scheme = cmdObj.scheme;
+                // $scope.scheme = cmdObj.scheme;
                 $scope.$apply();
             },
             function() {
+                var self = this;
                 return {
                     colorScheme: {
                         func: function(scheme) {
                             var schemes = ['default', 'coral', 'fire', 'hacker', 'invert', 'mint', 'naked', 'ocean'];
                             if (scheme && scheme !== "") {
-                                if (scheme === this.scheme) {
-                                    this.respond("You've already selected this scheme.");
+                                if (scheme === $scope.scheme) {
+                                    self.respond("You've already selected this scheme.");
                                 } else if (schemes.indexOf(scheme) !== -1) {
-                                    this.scheme = scheme;
-                                    this.respond("You've changed your scheme to: "+scheme);
+                                    $scope.scheme = scheme;
+                                    self.respond("You've changed your scheme to: "+scheme);
                                 } else {
-                                    this.respond("Scheme not found.");
+                                    self.respond("Scheme not found.");
                                 }
                             } else {
-                                this.command("help colorScheme");
+                                self.command("help colorScheme");
                             }
-                            this.update();
+                            // self.update();
                         },
                         desc: function() {
                             var schemes = ['default', 'coral', 'fire', 'hacker', 'invert', 'mint', 'naked', 'ocean'];
                             var available = ["Sets the color scheme.", "Available color schemes:"];
                             for (var scheme of schemes) {
-                                if (scheme === this.scheme) {
+                                if (scheme === self.scheme) {
                                     scheme = "* "+scheme;
                                 }
                                 available.push("\t"+scheme);
@@ -101,7 +102,7 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                 };
             }
         );
-        cmd.scheme = "default";
+        // cmd.scheme = "default";
 
         $scope.version = 'v'+cmd.version;
 
