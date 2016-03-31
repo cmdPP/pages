@@ -1,5 +1,4 @@
 @import 'vtortola-terminal';
-@import 'color-schemes';
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, blockquote,a,
@@ -133,3 +132,5 @@ input:focus, select:focus, textarea:focus, button:focus {
   height: 100%;
   overflow-x: scroll;
 }
+
+@import 'color-schemes';
