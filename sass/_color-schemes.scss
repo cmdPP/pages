@@ -11,13 +11,16 @@ $color_schemes: (
 @each $scheme, $colorMap in $color_schemes {
   .content[data-scheme="#{$scheme}"] {
     $back-color: map-get($colorMap, back);
+    $color: map-get($colorMap, color);
     @if (lightness($back-color) > 50) {
-      background-color: lighten($back-color, 10%);
-      color: darken(map-get($colorMap, color), 20%);
+      $back-color: lighten($back-color, 10%);
+      $color: darken($color, 20%);
     } @else {
-      background-color: darken($back-color, 10%);
-      color: lighten(map-get($colorMap, color), 20%);
+      $back-color: darken($back-color, 10%);
+      $color: lighten($color, 20%);
     }
+    background-color: $back-color;
+    color: $color;
     // background-color: lighten(map-get($colorMap, back), 10%);
     // color: map-get($colorMap, color);
   }
