@@ -131,7 +131,7 @@
     
     $scope.commandLine = '';
     
-    $scope.autocomplete = [];
+    // $scope.autocomplete = [];
     
     $scope.results = [];
     $scope.showPrompt = true;
