@@ -1,5 +1,5 @@
 <div class="stats-container">
-    <section class="stats-window" data-scheme="{{ scheme || 'default' }}">
+    <section class="stats-window">
         <p>Data: {{ data || "0 B" }}</p>
         <p>Money: {{ (money | currency : "$") || "$0.00" }}</p>
         <p>Capacity: {{ storage || "0 B" }}</p>
