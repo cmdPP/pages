@@ -206,10 +206,17 @@
        
     $scope.keypress= function (keyCode) {
         if ($scope.commandLine.length < 80) {
-            commandIndex = -1;
-            $scope.commandLine += String.fromCharCode(keyCode);
-            $scope.$$phase || $scope.$apply();
+            // commandIndex = -1;
+            // $scope.commandLine += String.fromCharCode(keyCode);
+            // $scope.$$phase || $scope.$apply();
+            $scope.setCommandLine($scope.commandLine+String.fromCharCode(keyCode));
         }
+    };
+    
+    $scope.setCommandLine = function(str) {
+        commandIndex = -1;
+        $scope.commandLine = str;
+        $scope.$$phase || $scope.$apply();
     };
 
     $scope.previousCommand = function () {
@@ -538,7 +545,8 @@
                                 if (poss.length === 1) {
                                     target.val(poss[0]);
                                     // consoleInput.val(poss[0]);
-                                    angular.element(element[0].querySelector('.terminal-input')).textContent = poss[0];
+                                    // scope.commandLine = poss[0];
+                                    scope.setCommandLine(poss[0]);
                                 } else if (poss.length > 1) {
                                     var tabbedPos = [""];
                                     for (var possible of poss) {
