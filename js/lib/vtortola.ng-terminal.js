@@ -170,6 +170,7 @@
         if (!output.added) {
             output.added = true;
             $scope.results.push(output);
+            $scope.$$phase || $scope.$apply();
         }
     });
 
