@@ -285,6 +285,13 @@
                 },
                 post: function postLink(scope, element, attrs, controller) { 
                         console.log('VTortola autocomplete function: ', ('autocomplete' in attrs ? attrs['autocomplete'] : undefined));
+                        scope.$watch('autocompleteValues', function(newVal, oldVal) {
+                            if (newValue) {
+                                console.log('Autocomplete Values have been set:', newVal);
+                                console.log('Old val:', oldVal);
+                            }
+                        }, true);
+                        scope.autocompleteValues = ('autocomplete' in attrs ? attrs['autocomplete'] : []);
                         var terminal = element;
                         var target = angular.element(element[0].querySelector('.terminal-target'));
                         var consoleView = angular.element(element[0].querySelector('.terminal-viewport'));

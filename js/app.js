@@ -118,6 +118,12 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                             }
                             return available;
                         }
+                    },
+                    scopeTest: {
+                        func: function(str) {
+                            $scope.blah.push(str);
+                        },
+                        desc: "Tests scopes"
                     }
                 };
             }
