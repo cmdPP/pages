@@ -269,6 +269,20 @@
             $scope.commandLine = $scope.commandLine.substring(0, $scope.commandLine.length - 1);
             $scope.$apply();
         }
+    };
+    
+    $scope.getComplete = function(str) {
+        var strLen = str.length;
+        var poss = [];
+        if (!str || str === "" || $scope.autocomplete.length === 0) {
+            return poss;
+        }
+        for (var possible of $scope.autocomplete) {
+            if (possible.toLowerCase().slice(0, strLen) === str.toLowerCase()) {
+                poss.push(possible);
+            }
+        }
+        return poss;
     }
     
     $scope.$watchCollection('autocomplete', function(newVal, oldVal) {
@@ -513,10 +527,23 @@
                                 scope.keypress(e.which);
                             e.preventDefault();
                         });
-
                         target.on("keydown", function (e) {
 
                             if (e.keyCode == 9) {
+                                var val = target.val();
+                                var poss = scope.getComplete(val);
+                                if (poss.length === 1) {
+                                    target.val(poss[0]);
+                                } else if (poss.length > 1) {
+                                    var tabbedPos = [""];
+                                    for (var possible of poss) {
+                                        tabbedPos.push("\t"+possible);
+                                    }
+                                    scope.$broadcast('terminal-output', {
+                                        output: true,
+                                        text: tabbedPos
+                                    });
+                                }
                                 e.preventDefault();
                             }
                             if (e.keyCode == 8) {

@@ -4,7 +4,7 @@ var app = angular.module('cmdpp', ['vtortola.ng-terminal', 'angularLoad']);
 
 app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad', function($scope, $http, $rootScope, angularLoad) {
     var cmd;
-    $scope.blah = ['asdf'];
+    $scope.commands = [];
     $rootScope.theme = 'vintage';
     $scope.booted = false;
     $scope.formattedBytes = '0 B';
@@ -128,6 +128,10 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                 };
             }
         );
+        
+        for (var command in cmd._commands) {
+            $scope.commands.push(command);
+        }
         // cmd.scheme = "default";
 
         $scope.version = 'v'+cmd.version;
