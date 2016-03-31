@@ -11,8 +11,8 @@ $color_schemes: (
 
 @each $scheme, $colorMap in $color_schemes {
   .content[data-scheme="#{$scheme}"] {
-    background-color: map-get($colorMap, back);
-    color: map-get($colorMap, color);
+    // background-color: map-get($colorMap, back);
+    color: lighten(map-get($colorMap, color), 10%);
   }
   // .stats-window[data-scheme="#{$scheme}"] {
   //   color: map-get($colorMap, color);
