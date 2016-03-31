@@ -6,7 +6,7 @@ $color_schemes: (
   invert: (back: white, color: black, input: black),
   mint: (back: #3F4531, color: #91F9E5, input: #7CFFA6),
   naked: (back: #B3C2BF, color: #3B3A36, input: #27588F),
-  ocean: (back: #89BDD3, color: white, input: #105BAD)
+  // ocean: (back: #89BDD3, color: white, input: #105BAD)
 );
 @each $scheme, $colorMap in $color_schemes {
   .content[data-scheme="#{$scheme}"] {

@@ -75,7 +75,16 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                 return {
                     colorScheme: {
                         func: function(scheme) {
-                            var schemes = ['default', 'coral', 'fire', 'hacker', 'invert', 'mint', 'naked', 'ocean'];
+                            var schemes = [
+                                'default',
+                                'coral',
+                                'fire',
+                                'hax0r',
+                                'invert',
+                                'mint',
+                                'naked',
+                                // 'ocean'
+                            ];
                             if (scheme && scheme !== "") {
                                 if (scheme === $scope.scheme) {
                                     self.respond("You've already selected this scheme.");
