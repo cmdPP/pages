@@ -22,19 +22,8 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
         text: startText,
         breakLine: false
     });
-
-    var cmd;
-
-    $http.get('https://api.github.com/repos/cmdPP/core/releases').then(function(res) {
-        var assets = res.data[0].assets;
-        var bundleURL = "";
-        for (var asset of assets) {
-            if (asset.name === "bundle.js") {
-                bundleURL = asset.browser_download_url;
-            }
-        }
-        return angularLoad.loadScript(bundleURL);
-    }).then(function() {
+    
+    function boot() {
         $scope.booted = true;
         $scope.$apply();
         cmd = new CMD(
@@ -105,6 +94,22 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                 };
             }
         );
+    }
+
+    var cmd;
+
+    $http.get('https://api.github.com/repos/cmdPP/core/releases').then(function(res) {
+        var assets = res.data[0].assets;
+        var bundleURL = "";
+        for (var asset of assets) {
+            if (asset.name === "bundle.js") {
+                bundleURL = asset.browser_download_url;
+            }
+        }
+        return angularLoad.loadScript(bundleURL);
+    }).then(function() {
+        setTimeout(boot, 2000);
+        
         // cmd.scheme = "default";
 
         $scope.version = 'v'+cmd.version;
