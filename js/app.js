@@ -3,6 +3,10 @@ var app = angular.module('cmdpp', ['vtortola.ng-terminal', 'angularLoad']);
 // Controllers
 
 app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad', function($scope, $http, $rootScope, angularLoad) {
+    var cmd;
+    $scope.blah = function() {
+        return ['asdf'];
+    };
     $rootScope.theme = 'vintage';
     $scope.booted = false;
     $scope.formattedBytes = '0 B';
@@ -22,8 +26,6 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
         text: startText,
         breakLine: false
     });
-
-    var cmd;
 
     $http.get('https://api.github.com/repos/cmdPP/core/releases').then(function(res) {
         var assets = res.data[0].assets;
