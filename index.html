@@ -1,53 +1,6 @@
 <!DOCTYPE html>
-<html ng-app="cmdpp">
-<head>
-    <meta charset="UTF-8" />
-    <!-- <link rel="stylesheet" href="css/lib/vtortola.ng-terminal.css" />
-    <link rel="stylesheet" href="css/style.css" /> -->
-    <link rel="stylesheet" href="css/style.min.css" />
-</head>
-
-<body ng-controller="cmdppController" data-scheme="{{ scheme || 'default' }}">
-    <div class="content" data-scheme="{{ scheme || 'default' }}">
-        <div class="row links">
-            <a href="./core">Documentation</a>
-        </div>
-        <div class="row crt-window">
-            <input id="crt-switch" type="checkbox" ng-checked="booted" />
-            <div class="screen">
-                <stats data="formattedBytes" money="money" storage="storage" version="version"></stats>
-                <section class="cmd-window" id="console-section">
-                    <terminal terminal-class="vintage-terminal" terminal-config="vintage" autocomplete="commands"></terminal>
-                </section>
-            </div>
-            <div class="crt-overlay">AV-1</div>
-        </div>
-    </div>
-    
-    <!-- <section id="stats">
-        <tr>
-            <td>
-                <pre>  Data: {{ formattedBytes || "0 Bytes" }}      Money: {{ (money | currency : "$") || "$0.00" }}</pre>
-            </td>
-        </tr>
-    </section> -->
-    <!-- <div class="links">
-        <a href="./core">Documentation</a>
-    </div> -->
-    <!-- <div class="stats-container">
-        <stats data="formattedBytes" money="money" storage="storage" version="version" scheme="scheme"></stats>
-    </div> -->
-    <!-- <stats data="formattedBytes" money="money" storage="storage" version="version" scheme="scheme"></stats> -->
-    <!-- <stats data="formattedBytes" money="money" storage="storage" version="version"></stats> -->
-    <!-- <section class="cmd-window" id="console-section" data-scheme="{{ scheme || 'default' }}"> -->
-    <!-- <section class="cmd-window" id="console-section">
-        <terminal terminal-class="vintage-terminal" terminal-config="vintage"></terminal>
-    </section> -->
-    <script src="js/lib/angular.js"></script>
-    <script src="js/lib/vtortola.ng-terminal.js"></script>
-    <script src="js/lib/angular-load.min.js"></script>
-    <!-- <script src="https://github.com/cmdPP/core/releases/download/v0.3.4/bundle.js"></script> -->
-    <script src="js/app.js"></script>
-    <!-- <script src="js/controllers/MainController.js"></script> -->
+<html>
+<body>
+  <iframe src="https://raw.githubusercontent.com/cmdPP/cmdPP.github.io/master/cmdpp_pages.html"></iframe>
 </body>
 </html>

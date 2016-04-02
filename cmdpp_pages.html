@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="cmdpp">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/cmdPP/cmdPP.github.io/master/css/style.min.css" />
+</head>
+
+<body ng-controller="cmdppController" data-scheme="{{ scheme || 'default' }}">
+  <div class="content" data-scheme="{{ scheme || 'default' }}">
+    <div class="links">
+      <a href="./core">Documentation</a>
+    </div>
+    <div class="row crt-window">
+      <input id="crt-switch" type="checkbox" ng-checked="booted" />
+      <div class="screen">
+        <stats data="formattedBytes" money="money" storage="storage" version="version"></stats>
+        <section class="cmd-window" id="console-section">
+          <terminal terminal-class="vintage-terminal" terminal-config="vintage" autocomplete="commands"></terminal>
+        </section>
+      </div>
+      <div class="crt-overlay">AV-1</div>
+    </div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.21/angular.min.js"></script>
+  <script src="https://raw.githubusercontent.com/cmdPP/cmdPP.github.io/master/js/lib/vtortola.ng-terminal.js"></script>
+  <script src="https://raw.githubusercontent.com/cmdPP/cmdPP.github.io/master/js/lib/angular-load.min.js"></script>
+  <script src="https://github.com/cmdPP/cmdPP.github.io/blob/master/js/app.js"></script>
+</body>
+</html>
