@@ -9,10 +9,10 @@
 
 <body ng-controller="cmdppController" data-scheme="{{ scheme || 'default' }}">
     <div class="content" data-scheme="{{ scheme || 'default' }}">
-        <div class="links">
+        <div class="row links">
             <a href="./core">Documentation</a>
         </div>
-        <div class="crt-window">
+        <div class="row crt-window">
             <input id="crt-switch" type="checkbox" ng-checked="booted" />
             <div class="screen">
                 <stats data="formattedBytes" money="money" storage="storage" version="version"></stats>
