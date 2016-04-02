@@ -61,7 +61,10 @@
   
   & .terminal-viewport {
     height: 94%;
-    margin: 15px 20px;
+    // margin: 15px 20px;
+    margin-top: 15px;
+    margin-right: 20px;
+    margin-left: 20px;
     overflow-x: hidden;
     overflow-y: hidden;
     padding: 0;
