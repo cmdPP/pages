@@ -3,6 +3,23 @@ var app = angular.module('cmdpp', ['vtortola.ng-terminal', 'angularLoad']);
 // Controllers
 
 app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad', function($scope, $http, $rootScope, angularLoad) {
+    var getURLParameter = function(param, dummyPath) {
+        var sPageURL = dummyPath || window.location.search.substring(1),
+            sURLVariables = sPageURL.split(/[&||?]/),
+            res;
+        for (var i = 0; i < sURLVariables.length; i++) {
+            var paramName = sURLVariables[i],
+                sParameterName = (i || '').split('=');
+                
+            if (sParameterName[0] === param) {
+                res = sParameterName[1];
+            }
+        }
+        return res;
+    }
+    
+    console.log('Debug:', getURLParameter('debug'));
+    
     var cmd;
     $scope.commands = [];
     $rootScope.theme = 'vintage';
@@ -37,7 +54,7 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
     }).then(function() {
         $scope.booted = true;
         cmd = new CMD(
-            function() {
+            function() { // Respond
                 console.log(arguments);
                 $scope.$broadcast('terminal-output', {
                     output: true,
@@ -45,14 +62,14 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                     breakLine: true
                 });
             },
-            function(cmdData) {
+            function(cmdData) { // Save
                 if (typeof Storage !== "undefined") {
                     for (var i in cmdData) {
                         localStorage.setItem(i, JSON.stringify(cmdData[i]));
                     }
                 }
             },
-            function() {
+            function() { // Load
                 var storedDataNames = ['data', 'money', 'increment', 'autoIncrement', 'storage', 'unlocked'];
                 var loadObj = {};
                 for (var i = 0; i < storedDataNames.length; i++) {
@@ -61,7 +78,7 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                 }
                 return loadObj;
             },
-            function(cmdObj) {
+            function(cmdObj) { // Update
                 $scope.formattedBytes = cmdObj.formatBytes();
                 $scope.money = cmdObj.money;
                 // $scope.storage = cmdObj.formatter(cmdObj.storages[cmdObj.storage].capacity);
@@ -69,7 +86,7 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                 // $scope.scheme = cmdObj.scheme;
                 $scope.$apply();
             },
-            function() {
+            function() { // commandProvider
                 var self = this;
                 return {
                     colorScheme: {
@@ -126,7 +143,11 @@ app.controller('cmdppController', ['$scope', '$http', '$rootScope', 'angularLoad
                         desc: "Tests scopes"
                     }
                 };
-            }
+            },
+            function(err) { // errorHandler
+                
+            },
+            true // Debug
         );
         
         for (var command in cmd._commands) {
